@@ -33,7 +33,7 @@ public class Dashbord_login_page {
 	    	String email = prop.getProperty("email");
 	    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 	    	WebElement emailField = wait.until(ExpectedConditions.visibilityOfElementLocated(userAgentname));
-            System.out.println("ch");
+
             emailField.sendKeys(email);
 	    }
 	    
