@@ -11,7 +11,7 @@ import java.util.*;
 public class Dashbord_login_page { 
 	private WebDriver driver ;
 	private Properties prop;
-	 
+
 	//locators 
 	
 	
@@ -33,7 +33,8 @@ public class Dashbord_login_page {
 	    	String email = prop.getProperty("email");
 	    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 	    	WebElement emailField = wait.until(ExpectedConditions.visibilityOfElementLocated(userAgentname));
-	    	emailField.sendKeys(email);
+            System.out.println("ch");
+            emailField.sendKeys(email);
 	    }
 	    
 	    public void enterCapcha() { 
