@@ -44,6 +44,7 @@ public class Dashbord_data extends Dashbord_login_page{
     sellbutton_element.click();
     }
     public void Enter_policy_holder_name(){
+        String name = prop.getProperty("name");
         WebDriverWait wait =new WebDriverWait(driver, Duration.ofSeconds(20));
         WebElement enter_name=wait.until(ExpectedConditions.visibilityOfElementLocated(Entername_holder));
         //System.out.println("HTML of element: " + enter_name.getAttribute("outerHTML"));

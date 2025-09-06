@@ -62,6 +62,15 @@ public class Dashbord_test  extends base{
     public void test_SAVER_2(){
         test.get().info("Starting Saver test 1A_indi");
 
+        Dashbord_data dashbordData = new Dashbord_data(driver, prop);
+
+        dashbordData.click_sellpolicy();
+        dashbordData.click_sellbUTTON();
+        dashbordData.Enter_policy_holder_name();
+
+
+
+
 
     }
 
