@@ -9,8 +9,8 @@ import java.time.Duration;
 import java.util.*;
 
 public class Dashbord_login_page { 
-	private WebDriver driver ;
-	private Properties prop;
+	protected WebDriver driver ;
+    protected Properties prop;
 
 	//locators 
 	
