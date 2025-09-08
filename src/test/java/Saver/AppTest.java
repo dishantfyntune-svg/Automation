@@ -1,4 +1,4 @@
-package com.quickquote2.Saver;
+package Saver;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 

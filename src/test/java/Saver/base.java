@@ -1,4 +1,4 @@
-package com.quickquote2.Saver;
+package Saver;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -15,7 +15,7 @@ import org.testng.annotations.BeforeSuite;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
-import com.utils.ExtentManager;
+import utils.ExtentManager;
 
 public class base {
 

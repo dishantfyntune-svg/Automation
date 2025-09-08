@@ -3,7 +3,7 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.pages_test.Input_Quickquote_2">
+      <class name="pages_test.Input_Quickquote_2">
         <methods>
           <include name="setupExtent"/>
           <include name="setup"/>

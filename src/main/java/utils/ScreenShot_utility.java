@@ -1,10 +1,8 @@
-package com.utils;
+package utils;
 
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import com.pages.*;
-import com.quickquote2.*;
 
 import java.io.File;
 import java.nio.file.Files;

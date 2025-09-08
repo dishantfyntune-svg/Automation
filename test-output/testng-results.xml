@@ -6,7 +6,7 @@
     <groups>
     </groups>
     <test started-at="2025-09-05T15:45:54 IST" name="Default test" finished-at="2025-09-05T15:45:59 IST" duration-ms="4854">
-      <class name="com.pages_test.Input_Quickquote_2">
+      <class name="pages_test.Input_Quickquote_2">
         <test-method is-config="true" signature="setupExtent()[pri:0, instance:com.pages_test.Input_Quickquote_2@1f2586d6]" started-at="2025-09-05T15:45:54 IST" name="setupExtent" finished-at="2025-09-05T15:45:54 IST" duration-ms="272" status="PASS">
           <reporter-output>
           </reporter-output>
@@ -15,7 +15,7 @@
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void com.pages_test.Input_Quickquote_2.login_Dashboard()]]>
+                  <![CDATA[public void pages_test.Input_Quickquote_2.login_Dashboard()]]>
               </value>
             </param>
           </params>
@@ -37,7 +37,7 @@ Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 1
 Session ID: 8a8e44555b28be30176a734ec608b7cb]]>
             </message>
             <full-stacktrace>
-              <![CDATA[org.openqa.selenium.InvalidSelectorException: invalid selector: Unable to locate an element with the xpath expression //input[@placeholder='Enter Captcha Code'66] because of the following error:
+                <![CDATA[org.openqa.selenium.InvalidSelectorException: invalid selector: Unable to locate an element with the xpath expression //input[@placeholder='Enter Captcha Code'66] because of the following error:
 SyntaxError: Failed to execute 'evaluate' on 'Document': The string '//input[@placeholder='Enter Captcha Code'66]' is not a valid XPath expression.
   (Session info: chrome=139.0.7258.155)
 For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalid-selector-exception
@@ -66,8 +66,8 @@ at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:3
 at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:194)
 at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:190)
 at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:203)
-at com.pages.Dashbord_login_page.enterCapcha(Dashbord_login_page.java:46)
-at com.pages_test.Input_Quickquote_2.login_Dashboard(Input_Quickquote_2.java:37)
+at pages.Dashbord_login_page.enterCapcha(Dashbord_login_page.java:46)
+at pages_test.Input_Quickquote_2.login_Dashboard(Input_Quickquote_2.java:37)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -117,7 +117,7 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void com.pages_test.Input_Quickquote_2.openDashboard()]]>
+                  <![CDATA[public void pages_test.Input_Quickquote_2.openDashboard()]]>
               </value>
             </param>
           </params>

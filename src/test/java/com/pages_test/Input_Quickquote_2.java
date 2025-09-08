@@ -2,12 +2,12 @@ package com.pages_test;
 
 import org.testng.annotations.Test;
 
-import com.quickquote2.Saver.base;
-import com.pages.*;
+import Saver.base;
+import pages.Dashbord_login_page;
 
 public class Input_Quickquote_2 extends base{
 
-	  @Test
+	  @Test (priority = 1)
 	    public void openDashboard() {
 		  	String actualTitle = driver.getTitle();
 	        System.out.println("Page title: " +actualTitle);	        
@@ -23,7 +23,7 @@ public class Input_Quickquote_2 extends base{
 	        	test.get().fail( "Page title expected was -"+expectedTitle);
 	        }
 	    }
-	  @Test
+	  @Test(priority = 2)
 	  
 	  public void login_Dashboard(){
 		  test.get().info("Starting Dashboard login test");
@@ -37,7 +37,11 @@ public class Input_Quickquote_2 extends base{
 	        loginPage.enterCapcha();
 	        test.get().info("Entered captcha automatically");
 
-
+          if (loginPage.CheckLogoDis() ){
+              test.get().pass("Logo is displayed");
+          }else {
+              test.get().fail( "Logo is not displayed");
+          }
 	        loginPage.submitOTP();
 	        test.get().info("Clicked Send OTP button");
 
@@ -53,4 +57,22 @@ public class Input_Quickquote_2 extends base{
 	            test.get().fail("Login failed. Expected: " + expectedTitle + " but found: " + actualTitle);
 	        }
 	    }
+        @Test(priority = 3)
+        public void check_captcha(){
+                    test.get().info("Checking Captcha automatically clickable");
+                    Dashbord_login_page loginPage =new Dashbord_login_page(driver, prop);
+
+                    loginPage.enterUser();
+                    test.get().info("User name entered");
+                    loginPage.CheckCaptcha();
+
+                    test.get().info("Captcha check successfully");
+
+                    loginPage.enterCapcha();
+                    test.get().info("Captcha check successfully");
+
+                    loginPage.submitOTP();
+                    test.get().info("otp submit successfully");
+
+        }
 }
