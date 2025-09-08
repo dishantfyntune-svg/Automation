@@ -72,7 +72,22 @@ public class Input_Quickquote_2 extends base{
                     test.get().info("Captcha check successfully");
 
                     loginPage.submitOTP();
-                    test.get().info("otp submit successfully");
+                    test.get().info(" otp submit successfully ");
 
         }
+        @Test(priority = 4)
+            public void EnterWrongOtp(){
+                test.get().info(" Entering wrong OTP automatically ");
+                Dashbord_login_page loginPage =new Dashbord_login_page(driver, prop);
+
+                loginPage.enterUser();
+                test.get().info("User name entered");
+                loginPage.enterCapcha();
+                test.get().info("Captcha check successfully");
+                loginPage.submitOTP();
+                test.get().info(" otp submit successfully ");
+                loginPage.WrongOpt();
+                test.get().info(" wrong otp submit successfully ");
+
+            }
 }

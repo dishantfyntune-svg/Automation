@@ -13,8 +13,6 @@ public class Dashbord_login_page {
     protected Properties prop;
 
     //locators
-
-
     private By userAgentname = By.xpath("//input[@placeholder='Enter Your Email/Mobile Number']");
     private By userCapchaname = By.xpath("//input[@placeholder='Enter Captcha Code']");
     private By captchaDiv = By.xpath("//div[contains(@class,'bg-extraLightGray')]");
@@ -78,7 +76,6 @@ public class Dashbord_login_page {
         }
 
     }
-
     public boolean CheckCaptcha() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement capchaRfresh = wait.until(ExpectedConditions.elementToBeClickable(checkcapcha));
@@ -88,6 +85,17 @@ public class Dashbord_login_page {
             return false;
         }
     }
+    public void WrongOpt(){
+        String Otp = prop.getProperty("Wrongpin");
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement enterotp = wait.until(ExpectedConditions.elementToBeClickable(Enterotp));
+        List<WebElement> otpBoxes = driver.findElements(By.xpath("//input[@maxlength='1']"));
+        for (int i = 0; i < Otp.length(); i++) {
+            otpBoxes.get(i).sendKeys(Character.toString(Otp.charAt(i)));
+        }
+
+    }
+
 }
 
 
