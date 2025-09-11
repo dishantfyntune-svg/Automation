@@ -1,9 +1,14 @@
 package com.pages_test;
 
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
 import Saver.base;
 import pages.Dashbord_login_page;
+
+import java.time.Duration;
 
 public class Input_Quickquote_2 extends base{
 
@@ -90,4 +95,23 @@ public class Input_Quickquote_2 extends base{
                 test.get().info(" wrong otp submit successfully ");
 
             }
+
+            @Test(priority = 5)
+            public void EmptyValue(){
+                test.get().info("Empty Value automatically");
+                Dashbord_login_page loginInvalid = new Dashbord_login_page(driver ,prop);
+
+                loginInvalid.EmptyValue();
+                test.get().info("empty User name entered");
+                loginInvalid.enterCapcha();
+                test.get().info("Captcha check successfully");
+                loginInvalid.submitOTP();
+
+                loginInvalid.Error_Message();
+                test.get().info(" GEt error message successfully");
+
+            }
+
+            
+
 }

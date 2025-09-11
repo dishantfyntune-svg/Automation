@@ -1,6 +1,8 @@
 package pages;
 
+import org.jspecify.annotations.Nullable;
 import org.openqa.selenium.*;
+import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -20,6 +22,8 @@ public class Dashbord_login_page {
     private By Enterotp = By.xpath("//input[@maxlength='1']");
     private By CheckLogo = By.xpath("//img[@class='h-12' or @alt='prudential']");
     private By checkcapcha = By.xpath("(//button[@type='button'])[1]");
+    private By Errormsg_usermail = By.xpath("//div[@class='text-error font-semi pl-1 text-xs']");
+
 
 
     public Dashbord_login_page(WebDriver driver, Properties prop) {
@@ -45,7 +49,6 @@ public class Dashbord_login_page {
                 return false;
             }
         }
-
 
     }
 
@@ -95,6 +98,21 @@ public class Dashbord_login_page {
         }
 
     }
+    public void EmptyValue(){
+        String emptymail = prop.getProperty("EmptyMail");
+        WebDriverWait   wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement emailfield = wait.until(ExpectedConditions.visibilityOfElementLocated(userAgentname));
+        emailfield.clear();
+        emailfield.sendKeys(emptymail);
+    }
+    public String Error_Message(){
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    WebElement errormag =  wait.until(ExpectedConditions.visibilityOfElementLocated(Errormsg_usermail));
+
+        return errormag.getText();
+    }
+
+
 
 }
 
