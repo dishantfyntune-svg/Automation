@@ -1,28 +1,48 @@
 package pages;
 
+import utils.FrameUtils;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.Properties;
+
 
 public class Saver_Journey extends Dashbord_login_page{
     public Saver_Journey(WebDriver driver, Properties prop) {
         super(driver, prop);
     }
     //common on allsprint
-    private By back_to_dasboard = By.xpath("//a[contains(text(),'Back')]");
-    private By Share_button = By.xpath("//a[contains(text(),'Share')]");
-    private By Agent_dropdown = By.xpath("//a[contains(text(),'Agent')]");
-    
+    protected By back_to_dasboard = By.xpath("//a[contains(text(),'Back')]");
+    protected  By Share_button = By.xpath("//a[contains(text(),'Share')]");
+    protected  By Agent_dropdown = By.xpath("//a[contains(text(),'Agent')]");
+
+    //DASHBOARD page
+
     //Locators on basic customer details
 
-    private By  ProposerName = By.xpath("//input[@id='proposer_name']");
-    private By Select_Gender = By.xpath("//select[@id='gender']");
-    private By Select_Plan_type  = By.xpath("//select[@id='age']");
-    private By Select_piccode = By.xpath("//select[@id='piccode']");
-    private By Enter_piccode = By.xpath("//input[@id='piccode']");
-    private By Select_Sum_Insure = By.xpath("//select[@id='sum_insure']");
-    private By In_Memb_self = By.xpath("//input[@id='mem_self']");
+
+    private By ProposerName = By.xpath("//input[@name='fullName']");
+
+    private By Select_Gender_male = By.xpath("//div[@role='radio' and  .//div[normalize-space(text())='Male']]");
+    private By Select_Gender_female = By.xpath("//div[@role='radio' and  .//div[normalize-space(text())='Female']]");
+    private By Select_Gender_other = By.xpath("((//div[contains(@class,'border-textBlack')])[5]");
+    private By Select_Plan_type_individual  = By.xpath("(//input[contains(@type,'radio')])[2]");
+    private By Select_Plan_type_floter  = By.xpath("/html[1]/body[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/form[1]/div[1]/div[4]/div[1]/section[1]/div[1]/div[2]/div[1]");
+    private By Select_Plan_type_multi_indivi  = By.xpath("(//div[contains(@class,'border-textBlack')])[10]");
+    private By Select_piccode = By.xpath("//input[@role='combobox' and @aria-label='Search']");
+    private By Enter_piccode = By.xpath("//input[@placeholder='Select Pincode']");
+    private By Click_Sum_Insure = By.xpath("//input[@placeholder='Select Sum Insured']");
+    private By select_Sum_Insure(String amount) {
+        return By.xpath("//li[@role='option' and contains(text(),'" + amount + "')]");
+        }
+    // Page class locator
+    private By In_Memb_self = By.xpath("//input[@placeholder='Age' and @aria-label='Assignee']");
+
     private By IN_Memb_spouse = By.xpath("//input[@id='mem_spouse']");
     private By In_memb_son = By.xpath("//input[@id='mem_son']");
     private By In_memb_dauther = By.xpath("//input[@id='mem_dauther']");
@@ -77,5 +97,85 @@ public class Saver_Journey extends Dashbord_login_page{
 
 
 
+
+// Method
+
+
+    public void Enter_proposer_Name() {
+        String proposerName = prop.getProperty("pname");
+        git gui
+        WebElement NameInput = FrameUtils.findElementInFrames(driver, ProposerName);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOf(NameInput));
+        NameInput.sendKeys(proposerName);
+
+    }
+    public void Select_Gender(String gender) {
+        By genderLocator; // l variable
+
+        switch (gender.toLowerCase()) {
+            case "male":
+                genderLocator = Select_Gender_male;
+                break;
+            case "female":
+                genderLocator = Select_Gender_female;
+                break;
+            default:
+                genderLocator = Select_Gender_other;
+        }
+
+        // This line **actually clicks the radio button**
+        WebElement genderOption = FrameUtils.findElementInFrames(driver, genderLocator);
+        genderOption.click();
+    }
+    public void Select_Gender_female() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement female = wait.until(ExpectedConditions.visibilityOfElementLocated(Select_Gender_female));
+        female.click();
+    }
+    public void Select_Gender_other() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement other = wait.until(ExpectedConditions.visibilityOfElementLocated(Select_Gender_other));
+        other.click();
+    }
+    public void Select_Plan_type_individual() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement individual = wait.until(ExpectedConditions.visibilityOfElementLocated(Select_Plan_type_individual));
+        individual.click();
+    }
+    public void Select_Plan_type_floter() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement floter = wait.until(ExpectedConditions.visibilityOfElementLocated(Select_Plan_type_floter));
+        floter.click();
+    }
+    public void Select_Plan_type_multi_indivi() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement multi_indivi = wait.until(ExpectedConditions.visibilityOfElementLocated(Select_Plan_type_multi_indivi));
+        multi_indivi.click();
+    }
+    public void Select_Enter_piccode(String piccode) {
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement piccodeInput = wait.until(ExpectedConditions.visibilityOfElementLocated(Select_piccode));
+        piccodeInput.clear();
+        piccodeInput.sendKeys(piccode);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(Enter_piccode)).click();
+
+    }
+
+    public void Select_Enter_Sum_Insure(String amount) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement sumInsure = wait.until(ExpectedConditions.visibilityOfElementLocated(Click_Sum_Insure));
+        sumInsure.click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(select_Sum_Insure(amount))).click();
+    }
+    public void Enter_In_Memb_self(String selfAge) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement In_Memb_selfInput = wait.until(ExpectedConditions.visibilityOfElementLocated(In_Memb_self));
+        In_Memb_selfInput.clear();
+        In_Memb_selfInput.sendKeys(selfAge);
+    }
+
 }
+
 

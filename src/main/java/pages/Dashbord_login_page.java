@@ -10,25 +10,43 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.*;
 
-public class Dashbord_login_page {
+public class Dashbord_login_page
+{
     protected WebDriver driver;
     protected Properties prop;
 
     //locators
-    private By userAgentname = By.xpath("//input[@placeholder='Enter Your Email/Mobile Number']");
-    private By userCapchaname = By.xpath("//input[@placeholder='Enter Captcha Code']");
-    private By captchaDiv = By.xpath("//div[contains(@class,'bg-extraLightGray')]");
-    private By Sendotp = By.xpath("//button[@type='submit']");
+    private By userAgentname = By.xpath("//input[@placeholder='Email or Phone Number' or @name='emailOrMobile']");
+    private By password = By.xpath("//input[@placeholder='Enter password' or @name='password']");
+    private By userCapchaname = By.xpath("//input[@placeholder='Enter captcha code' or @name='captchaCode']");
+    private By captchaDiv = By.xpath("//div[contains(@class,'bg-extraLightGray mt-1 w-24 rounded-md p-2')]");
+    private By Sendotp = By.xpath("//button[@type='submit' or normalize-space(text())='Get OTP']");
     private By Enterotp = By.xpath("//input[@maxlength='1']");
     private By CheckLogo = By.xpath("//img[@class='h-12' or @alt='prudential']");
     private By checkcapcha = By.xpath("(//button[@type='button'])[1]");
     private By Errormsg_usermail = By.xpath("//div[@class='text-error font-semi pl-1 text-xs']");
-
+    //
+    private By sellpolicy = By.xpath("//span[normalize-space()='Sell Policy']");
+    private By sellBUTTON = By.xpath("(//button[normalize-space(text())='Sell Now'])[1] ");
 
 
     public Dashbord_login_page(WebDriver driver, Properties prop) {
         this.driver = driver;
         this.prop = prop;
+    }
+
+
+    public void click_sellpolicy(){
+        WebDriverWait wait =new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement sellpolicy_element = wait.until(ExpectedConditions.elementToBeClickable(sellpolicy));
+
+        sellpolicy_element.click();
+
+    }
+    public void click_sellbUTTON(){
+        WebDriverWait wait =new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement sellbutton_element = wait.until(ExpectedConditions.elementToBeClickable(sellBUTTON));
+        sellbutton_element.click();
     }
 
     public void enterUser() {
@@ -38,7 +56,13 @@ public class Dashbord_login_page {
 
         emailField.sendKeys(email);
     }
+    public void enterPassword() {
+        String pass = prop.getProperty("password");
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement passwordField = wait.until(ExpectedConditions.visibilityOfElementLocated(password));
 
+        passwordField.sendKeys(pass);
+    }
     public boolean CheckLogoDis() {
         try {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));

@@ -38,6 +38,9 @@ public class Input_Quickquote_2 extends base{
 		  
 		  loginPage.enterUser();
 		  test.get().info("Entered email from config.properties");
+
+          loginPage.enterPassword();
+            test.get().info("Entered password from config.properties");
 		  
 	        loginPage.enterCapcha();
 	        test.get().info("Entered captcha automatically");
@@ -69,8 +72,11 @@ public class Input_Quickquote_2 extends base{
 
                     loginPage.enterUser();
                     test.get().info("User name entered");
-                    loginPage.CheckCaptcha();
 
+                    loginPage.enterPassword();
+                    test.get().info("Password entered");
+
+                    loginPage.CheckCaptcha();
                     test.get().info("Captcha check successfully");
 
                     loginPage.enterCapcha();
@@ -87,6 +93,10 @@ public class Input_Quickquote_2 extends base{
 
                 loginPage.enterUser();
                 test.get().info("User name entered");
+
+                loginPage.enterPassword();
+                test.get().info("Password entered");
+
                 loginPage.enterCapcha();
                 test.get().info("Captcha check successfully");
                 loginPage.submitOTP();

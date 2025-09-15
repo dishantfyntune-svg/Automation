@@ -19,6 +19,9 @@ public class Dashbord_test  extends base{
         loginPage.enterUser();
         test.get().info("Entered email from config.properties");
 
+        loginPage.enterPassword();
+        test.get().info("Entered password from config.properties");
+
         loginPage.enterCapcha();
         test.get().info("Entered captcha automatically");
 
@@ -45,11 +48,6 @@ public class Dashbord_test  extends base{
 
         dashbordData.click_sellpolicy();
         dashbordData.click_sellbUTTON();
-        dashbordData.Enter_policy_holder_name();
-        dashbordData.Select_gender_as_male();
-        dashbordData.Select_plan_indi();
-        dashbordData.Enter_pincode();
-        dashbordData.Select_proposer_age();
 
     }
 
@@ -65,7 +63,7 @@ public class Dashbord_test  extends base{
 
         dashbordData.click_sellpolicy();
         dashbordData.click_sellbUTTON();
-        dashbordData.Enter_policy_holder_name();
+
 
 
 
