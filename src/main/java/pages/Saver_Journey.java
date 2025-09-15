@@ -103,7 +103,7 @@ public class Saver_Journey extends Dashbord_login_page{
 
     public void Enter_proposer_Name() {
         String proposerName = prop.getProperty("pname");
-        git gui
+
         WebElement NameInput = FrameUtils.findElementInFrames(driver, ProposerName);
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOf(NameInput));
