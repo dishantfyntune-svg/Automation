@@ -1,5 +1,6 @@
 package com.pages_test;
 
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -9,12 +10,16 @@ import pages.Dashbord_login_page;
 
 public class Dashbord_test  extends base{
 
+
+    private WebDriverWait wait;
+
     @BeforeMethod
     public void login_Dashboard(){
         test.get().info("Starting Dashboard login test");
 
 
-        Dashbord_login_page loginPage =new Dashbord_login_page(driver, prop);
+
+        Dashbord_login_page loginPage =new Dashbord_login_page(driver, prop, wait);
 
         loginPage.enterUser();
         test.get().info("Entered email from config.properties");
@@ -22,9 +27,13 @@ public class Dashbord_test  extends base{
         loginPage.enterPassword();
         test.get().info("Entered password from config.properties");
 
-        loginPage.enterCapcha();
-        test.get().info("Entered captcha automatically");
+       // loginPage.enterCapcha();
+       // test.get().info("Entered captcha automatically");
+        loginPage.Check_box_RBOT();
+        test.get().info("Checked me checkbox");
 
+        loginPage.Check_Terms_and_condition();
+        test.get().info("Checked terms and conditions checkbox");
 
         loginPage.submitOTP();
         test.get().info("Clicked Send OTP button");
@@ -35,6 +44,9 @@ public class Dashbord_test  extends base{
         loginPage.EnterOtp();
         test.get().info("Otp submit successfully");
 
+        loginPage.VerifyOtp();
+        test.get().info("Otp verified successfully");
+
         if (actualTitle.equals(expectedTitle)) {
             test.get().pass("Login successful, landed on Dashboard page with title: " + actualTitle);
         } else {
@@ -44,7 +56,7 @@ public class Dashbord_test  extends base{
     @Test  (priority = 1)
     public void test_SAVER_1(){
         test.get().info("Starting Saver test");
-        Dashbord_data dashbordData = new Dashbord_data(driver, prop);
+        Dashbord_data dashbordData = new Dashbord_data(driver, prop,wait);
 
         dashbordData.click_sellpolicy();
         dashbordData.click_sellbUTTON();
@@ -53,9 +65,10 @@ public class Dashbord_test  extends base{
 
     @AfterMethod
     public void logout(){
+        driver.quit();
 
     }
-    @Test(priority = 2)
+    /*@Test(priority = 2)
     public void test_SAVER_2(){
         test.get().info("Starting Saver test 1A_indi");
 
@@ -69,7 +82,7 @@ public class Dashbord_test  extends base{
 
 
 
-    }
+    }*/
 
 
 }

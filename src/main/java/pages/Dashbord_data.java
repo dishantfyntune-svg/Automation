@@ -14,13 +14,14 @@ import java.util.Properties;
 public class Dashbord_data extends Dashbord_login_page{
 
 
-    public Dashbord_data(WebDriver driver, Properties prop) {
-        super(driver, prop);
+    public Dashbord_data(WebDriver driver, Properties prop,WebDriverWait wait) {
+        super(driver, prop, wait);
 
     }
 
     //Locators
     private By sellpolicy = By.xpath("//span[normalize-space()='Sell Policy']");
+    private By SellExpolatory_policy = By.xpath("//button[normalize-space()='Start now']");
     private By sellBUTTON = By.xpath("/html/body/div/div/div[3]/div/div/div/div[2]/div/div[2]/div[1]/div/div/div[2]/div/div[3]/button");
     private By Entername_holder = By.xpath("//input[@type='text' and @placeholder='Enter Full Name']");
     private By Select_gender_male = By.xpath("//*[@id='headlessui-radio]");
@@ -33,6 +34,13 @@ public class Dashbord_data extends Dashbord_login_page{
     public void click_sellpolicy(){
         WebDriverWait wait =new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement sellpolicy_element = wait.until(ExpectedConditions.elementToBeClickable(sellpolicy));
+
+        sellpolicy_element.click();
+
+    }
+    public void click_Expolatory_sellpolicy(){
+        WebDriverWait wait =new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement sellpolicy_element = wait.until(ExpectedConditions.elementToBeClickable(SellExpolatory_policy));
 
         sellpolicy_element.click();
 
